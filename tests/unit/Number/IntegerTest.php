@@ -43,7 +43,10 @@ class IntegerTest extends TestCase
 
     public function testGetRaw()
     {
-        
+        $value = 1;
+        $sut = new Model($value);
+
+        $this->assertSame($value, $sut->toRaw());
     }
 
 }

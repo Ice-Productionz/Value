@@ -44,7 +44,10 @@ class UuidTest extends TestCase
 
     public function testGetRaw()
     {
+        $value = 'e1814cf3-7a9a-440b-95dc-b9915ec639ad';
+        $sut = new Model($value);
 
+        $this->assertSame($value, $sut->toRaw());
     }
 
 }

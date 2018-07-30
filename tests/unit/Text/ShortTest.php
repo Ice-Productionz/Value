@@ -40,7 +40,10 @@ class ShortTest extends TestCase
 
     public function testGetRaw()
     {
-        
+        $value = '23432';
+        $sut = new Model($value);
+
+        $this->assertSame($value, $sut->toRaw());
     }
 
 }
