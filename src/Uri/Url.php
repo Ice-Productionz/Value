@@ -2,6 +2,8 @@
 
 namespace IceProductionz\Value\Uri;
 
+use IceProductionz\Value\Exception\InvalidValue;
+
 class Url implements Uri
 {
     /**
@@ -16,6 +18,9 @@ class Url implements Uri
      */
     public function __construct(string $value)
     {
+        if (!filter_var($value, FILTER_VALIDATE_URL)) {
+            throw new InvalidValue('$value is not a valid url');
+        }
         $this->value = $value;
     }
 
