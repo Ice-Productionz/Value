@@ -40,13 +40,34 @@ class IntegerTest extends TestCase
         $this->assertInstanceOf(Value::class, $sut);
     }
 
-
-    public function testGetRaw()
+    /***
+     * Test getting the raw the raw value of the object
+     */
+    public function testToRaw()
     {
         $value = 1;
         $sut = new Model($value);
 
         $this->assertSame($value, $sut->toRaw());
     }
+
+    /**
+     * Test getting json value of the object
+     */
+    public function testToJson()
+    {
+        $value = 1;
+
+        $expected = [
+            'value' => $value,
+            'type'  => 'number.integer'
+        ];
+
+        $sut = new Model($value);
+
+        $this->assertSame($expected, $sut->toJson());
+    }
+
+
 
 }

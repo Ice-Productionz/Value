@@ -41,8 +41,10 @@ class UuidTest extends TestCase
         $this->assertInstanceOf(Value::class, $sut);
     }
 
-
-    public function testGetRaw()
+    /**
+     * Test getting raw value of object
+     */
+    public function testToRaw()
     {
         $value = 'e1814cf3-7a9a-440b-95dc-b9915ec639ad';
         $sut = new Model($value);
@@ -50,4 +52,20 @@ class UuidTest extends TestCase
         $this->assertSame($value, $sut->toRaw());
     }
 
+    /**
+     * Test getting json value of the object
+     */
+    public function testToJson()
+    {
+        $value = 'e1814cf3-7a9a-440b-95dc-b9915ec639ad';
+
+        $expected = [
+            'value' => $value,
+            'type'  => 'identifier.uuid'
+        ];
+
+        $sut = new Model($value);
+
+        $this->assertSame($expected, $sut->toJson());
+    }
 }

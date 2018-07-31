@@ -51,12 +51,32 @@ class UrlTest extends TestCase
     }
 
 
-    public function testGetRaw()
+    /**
+     * Test getting the raw value of the object
+     */
+    public function testToRaw()
     {
         $value = 'https://example.com/ass/sd?asd=3#23432';
         $sut = new Model($value);
 
         $this->assertSame($value, $sut->toRaw());
+    }
+
+    /**
+     * Test getting json value of the object
+     */
+    public function testToJson()
+    {
+        $value = 'https://example.com/ass/sd?asd=3#23432';
+
+        $expected = [
+            'value' => $value,
+            'type'  => 'uri.url'
+        ];
+
+        $sut = new Model($value);
+
+        $this->assertSame($expected, $sut->toJson());
     }
 
 }

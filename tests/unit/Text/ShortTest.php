@@ -38,7 +38,10 @@ class ShortTest extends TestCase
     }
 
 
-    public function testGetRaw()
+    /**
+     * Test getting the raw value of the object
+     */
+    public function testToRaw()
     {
         $value = '23432';
         $sut = new Model($value);
@@ -46,4 +49,20 @@ class ShortTest extends TestCase
         $this->assertSame($value, $sut->toRaw());
     }
 
+    /**
+     * Test getting json value of the object
+     */
+    public function testToJson()
+    {
+        $value = '23432';
+
+        $expected = [
+            'value' => $value,
+            'type'  => 'text.short'
+        ];
+
+        $sut = new Model($value);
+
+        $this->assertSame($expected, $sut->toJson());
+    }
 }
